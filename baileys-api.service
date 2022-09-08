@@ -1,0 +1,20 @@
+#install: ln -s $PWD/baileys-api.service /lib/systemd/system/baileys-api.service
+#systemctl daemon-reload
+#systemctl start baileys-api
+#journalctl -xe baileys-api
+[Unit]
+Description=baileys-api server
+Documentation=https://example.com
+After=network.target
+
+[Service]
+Environment="PORT=8000"
+Environment="HOST=localhost"
+Type=simple
+#User=ubuntu
+WorkingDirectory=/root/baileys-api
+ExecStart=/usr/bin/node /root/baileys-api/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

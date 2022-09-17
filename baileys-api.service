@@ -9,11 +9,12 @@ After=network.target
 
 [Service]
 Environment="PORT=8000"
-Environment="HOST=localhost"
+Environment="HOST=172.106.171.130"
+Environment=NODE_VERSION=16
 Type=simple
 #User=ubuntu
 WorkingDirectory=/root/baileys-api
-ExecStart=/usr/bin/node /root/baileys-api/app.js
+ExecStart=/root/.nvm/nvm-exec node /root/baileys-api/app.js
 Restart=on-failure
 
 [Install]
